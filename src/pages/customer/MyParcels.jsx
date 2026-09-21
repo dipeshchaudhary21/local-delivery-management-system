@@ -70,9 +70,7 @@ function MyParcels() {
               <td>{parcel.status}</td>
 
               <td>
-                <Link to="/track-parcel">
-                  Track
-                </Link>
+                <Link to="/track-parcel"> Track </Link>
               </td>
 
             </tr>
@@ -83,9 +81,7 @@ function MyParcels() {
 
       </table>
 
-      <Link to="/customer-dashboard">
-        ← Dashboard
-      </Link>
+      <Link to="/customer-dashboard"> Dashboard</Link>
 
     </div>
   );

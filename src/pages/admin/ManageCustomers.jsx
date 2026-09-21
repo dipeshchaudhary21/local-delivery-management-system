@@ -117,9 +117,7 @@ function ManageCustomers() {
 
         <h1>Manage Customers</h1>
 
-        <Link to="/admin-dashboard">
-          ← Admin Dashboard
-        </Link>
+        <Link to="/admin-dashboard"> Admin Dashboard </Link>
 
       </div>
 
@@ -132,39 +130,12 @@ function ManageCustomers() {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          <input name="name" placeholder="Customer Name" value={form.name} onChange={handleChange} />
+          <input name="email" placeholder="Email" value={form.email} onChange={handleChange} />
+          <input name="phone" placeholder="Phone" value={form.phone} onChange={handleChange} />
+          <input name="address" placeholder="Address" value={form.address} onChange={handleChange}/>
 
-          <input
-            name="name"
-            placeholder="Customer Name"
-            value={form.name}
-            onChange={handleChange}
-          />
-
-          <input
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-          />
-
-          <input
-            name="phone"
-            placeholder="Phone"
-            value={form.phone}
-            onChange={handleChange}
-          />
-
-          <input
-            name="address"
-            placeholder="Address"
-            value={form.address}
-            onChange={handleChange}
-          />
-
-          <button type="submit">
-            {editingId ? "Update" : "Add"}
-          </button>
-
+          <button type="submit">{editingId ? "Update" : "Add"}</button>
         </form>
 
       </div>
@@ -190,34 +161,16 @@ function ManageCustomers() {
           <tbody>
 
             {customers.map((customer) => (
-
               <tr key={customer.id}>
-
                 <td>{customer.name}</td>
                 <td>{customer.email}</td>
                 <td>{customer.phone}</td>
                 <td>{customer.address}</td>
 
                 <td>
-
-                  <button
-                    onClick={() =>
-                      handleEdit(customer)
-                    }
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleDelete(customer.id)
-                    }
-                  >
-                    Delete
-                  </button>
-
+                  <button onClick={() =>handleEdit(customer)}>Edit</button>
+                  <button onClick={() => handleDelete(customer.id) }> Delete </button>
                 </td>
-
               </tr>
 
             ))}

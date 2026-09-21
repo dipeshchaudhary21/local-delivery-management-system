@@ -28,52 +28,25 @@ function App() {
         <Route path="/" element={<Login />} />
 
         {/* Customer */}
-        <Route
-          path="/customer-dashboard"
-          element={<CustomerDashboard />}
-        />
+        <Route path="/customer-dashboard" element={<CustomerDashboard />}/>
 
-        <Route
-          path="/book-parcel"
-          element={<BookParcel />}
-        />
+        <Route path="/book-parcel" element={<BookParcel />}/>
 
-        <Route
-          path="/track-parcel"
-          element={<TrackParcel />}
-        />
+        <Route path="/track-parcel" element={<TrackParcel />}/>
 
-        <Route
-          path="/my-parcels"
-          element={<MyParcels />}
-        />
+        <Route path="/my-parcels" element={<MyParcels />} />
 
-        <Route
-          path="/profile"
-          element={<CustomerProfile />}
-        />
+        <Route path="/profile" element={<CustomerProfile />}/>
 
         {/* Staff */}
-        <Route
-          path="/staff-dashboard"
-          element={<StaffDashboard />}
-        />
+        <Route path="/staff-dashboard" element={<StaffDashboard />} />
 
         {/* Admin */}
-        <Route
-          path="/admin-dashboard"
-          element={<AdminDashboard />}
-        />
+        <Route  path="/admin-dashboard" element={<AdminDashboard />}/>
 
-        <Route
-          path="/manage-customers"
-          element={<ManageCustomers />}
-        />
+        <Route path="/manage-customers" element={<ManageCustomers />}/>
 
-        <Route
-          path="/manage-parcels"
-          element={<ManageParcels />}
-        />
+        <Route path="/manage-parcels" element={<ManageParcels />}/>
 
       </Routes>
     </BrowserRouter>

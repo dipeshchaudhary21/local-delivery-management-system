@@ -4,34 +4,21 @@ import "./AdminDashboard.css";
 function AdminDashboard() {
   return (
     <div className="admin-dashboard">
-
       <aside className="admin-sidebar">
 
         <h2>Admin Panel</h2>
 
-        <Link to="/admin-dashboard">
-          Dashboard
-        </Link>
+        <Link to="/admin-dashboard">Dashboard </Link>
 
-        <Link to="/manage-customers">
-          Customers
-        </Link>
+        <Link to="/manage-customers"> Customers </Link>
 
-        <Link to="/manage-parcels">
-          Parcels
-        </Link>
+        <Link to="/manage-parcels">Parcels</Link>
 
-        <Link to="/admin-dashboard">
-          Staff
-        </Link>
+        <Link to="/admin-dashboard"> Staff</Link>
 
-        <Link to="/admin-dashboard">
-          Reports
-        </Link>
+        <Link to="/admin-dashboard">Reports</Link>
 
-        <Link to="/">
-          Logout
-        </Link>
+        <Link to="/"> Logout </Link>
 
       </aside>
 

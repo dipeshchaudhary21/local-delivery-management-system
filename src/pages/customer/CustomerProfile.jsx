@@ -33,57 +33,24 @@ function CustomerProfile() {
       <div className="profile-card">
 
         <label>Name</label>
-
-        <input
-          name="name"
-          value={profile.name}
-          disabled={!edit}
-          onChange={handleChange}
-        />
+        <input name="name" value={profile.name} disabled={!edit} onChange={handleChange} />
 
         <label>Email</label>
-
-        <input
-          name="email"
-          value={profile.email}
-          disabled={!edit}
-          onChange={handleChange}
-        />
+        <input name="email" value={profile.email} disabled={!edit} onChange={handleChange} />
 
         <label>Phone</label>
-
-        <input
-          name="phone"
-          value={profile.phone}
-          disabled={!edit}
-          onChange={handleChange}
-        />
+        <input name="phone"  value={profile.phone} disabled={!edit}  onChange={handleChange} />
 
         <label>Address</label>
-
-        <input
-          name="address"
-          value={profile.address}
-          disabled={!edit}
-          onChange={handleChange}
-        />
+        <input name="address" value={profile.address} disabled={!edit} onChange={handleChange}/>
 
         {edit ? (
-          <button onClick={handleSave}>
-            Save
-          </button>
+          <button onClick={handleSave}>  Save </button>
         ) : (
-          <button onClick={() => setEdit(true)}>
-            Edit
-          </button>
+          <button onClick={() => setEdit(true)}> Edit</button>
         )}
-
       </div>
-
-      <Link to="/customer-dashboard">
-        ← Dashboard
-      </Link>
-
+      <Link to="/customer-dashboard">  Dashboard </Link>
     </div>
   );
 }

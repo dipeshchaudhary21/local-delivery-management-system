@@ -140,9 +140,7 @@ function ManageParcels() {
 
         <h1>Manage Parcels</h1>
 
-        <Link to="/admin-dashboard">
-          ← Admin Dashboard
-        </Link>
+        <Link to="/admin-dashboard"> Admin Dashboard </Link>
 
       </div>
 
@@ -155,64 +153,21 @@ function ManageParcels() {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          <input name="trackingId" placeholder="Tracking ID" value={form.trackingId} onChange={handleChange}/>
+          <input name="customer" placeholder="Customer" value={form.customer} onChange={handleChange}/>
+          <input name="receiver" placeholder="Receiver" value={form.receiver} onChange={handleChange}/>
+          <input name="staff" placeholder="Staff" value={form.staff} onChange={handleChange}/>
 
-          <input
-            name="trackingId"
-            placeholder="Tracking ID"
-            value={form.trackingId}
-            onChange={handleChange}
-          />
-
-          <input
-            name="customer"
-            placeholder="Customer"
-            value={form.customer}
-            onChange={handleChange}
-          />
-
-          <input
-            name="receiver"
-            placeholder="Receiver"
-            value={form.receiver}
-            onChange={handleChange}
-          />
-
-          <input
-            name="staff"
-            placeholder="Staff"
-            value={form.staff}
-            onChange={handleChange}
-          />
-
-          <select
-            name="type"
-            value={form.type}
-            onChange={handleChange}
-          >
+          <select name="type" value={form.type} onChange={handleChange}>
             <option>Document</option>
             <option>Package</option>
             <option>Box</option>
           </select>
 
-          <input
-            name="weight"
-            placeholder="Weight"
-            value={form.weight}
-            onChange={handleChange}
-          />
+          <input name="weight" placeholder="Weight" value={form.weight} onChange={handleChange} />
+          <input type="date" name="date" value={form.date} onChange={handleChange}/>
 
-          <input
-            type="date"
-            name="date"
-            value={form.date}
-            onChange={handleChange}
-          />
-
-          <select
-            name="status"
-            value={form.status}
-            onChange={handleChange}
-          >
+          <select name="status" value={form.status} onChange={handleChange} >
             <option>Pending</option>
             <option>Picked Up</option>
             <option>In Transit</option>
@@ -250,7 +205,6 @@ function ManageParcels() {
           </thead>
 
           <tbody>
-
             {parcels.map((parcel) => (
 
               <tr key={parcel.id}>
@@ -265,35 +219,14 @@ function ManageParcels() {
                 <td>{parcel.status}</td>
 
                 <td>
-
-                  <button
-                    onClick={() =>
-                      handleEdit(parcel)
-                    }
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    onClick={() =>
-                      handleDelete(parcel.id)
-                    }
-                  >
-                    Delete
-                  </button>
-
+                  <button onClick={() => handleEdit(parcel)}>  Edit </button>
+                  <button onClick={() => handleDelete(parcel.id) } > Delete</button>
                 </td>
-
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </div>
-
     </div>
   );
 }

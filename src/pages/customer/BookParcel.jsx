@@ -47,36 +47,16 @@ function BookParcel() {
       <form onSubmit={handleSubmit}>
 
         <label>Receiver Name</label>
-
-        <input
-          name="receiverName"
-          value={form.receiverName}
-          onChange={handleChange}
-        />
+        <input name="receiverName" value={form.receiverName} onChange={handleChange} />
 
         <label>Receiver Phone</label>
-
-        <input
-          name="receiverPhone"
-          value={form.receiverPhone}
-          onChange={handleChange}
-        />
+        <input name="receiverPhone" value={form.receiverPhone} onChange={handleChange} />
 
         <label>Delivery Address</label>
-
-        <input
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-        />
+        <input name="address" value={form.address}onChange={handleChange}/>
 
         <label>Parcel Type</label>
-
-        <select
-          name="parcelType"
-          value={form.parcelType}
-          onChange={handleChange}
-        >
+        <select name="parcelType" value={form.parcelType} onChange={handleChange}>
           <option>Document</option>
           <option>Package</option>
           <option>Box</option>
@@ -84,31 +64,14 @@ function BookParcel() {
         </select>
 
         <label>Weight</label>
-
-        <input
-          name="weight"
-          placeholder="e.g. 2 kg"
-          value={form.weight}
-          onChange={handleChange}
-        />
+        <input name="weight" placeholder="e.g. 2 kg" value={form.weight} onChange={handleChange}/>
 
         <label>Description</label>
-
-        <textarea
-          name="description"
-          value={form.description}
-          onChange={handleChange}
-        />
-
-        <button type="submit">
-          Book Parcel
-        </button>
+        <textarea name="description" value={form.description} onChange={handleChange} />
+        <button type="submit">Book Parcel </button>
 
       </form>
-
-      <Link to="/customer-dashboard">
-        ← Dashboard
-      </Link>
+      <Link to="/customer-dashboard"></Link>
 
     </div>
   );

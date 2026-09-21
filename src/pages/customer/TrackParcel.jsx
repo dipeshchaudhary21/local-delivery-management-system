@@ -26,43 +26,23 @@ function TrackParcel() {
 
       <h1>Track Parcel</h1>
 
-      <input
-        placeholder="Enter Tracking ID"
-        value={trackingId}
-        onChange={(e) => setTrackingId(e.target.value)}
-      />
-
-      <button onClick={trackParcel}>
-        Track
-      </button>
+      <input placeholder="Enter Tracking ID" value={trackingId} onChange={(e) => setTrackingId(e.target.value)}/>
+      <button onClick={trackParcel}> Track </button>
 
       {parcel && (
         <div className="tracking-result">
 
           <h2>Parcel Information</h2>
 
-          <p>
-            <b>Tracking ID:</b> {parcel.trackingId}
-          </p>
-
-          <p>
-            <b>Receiver:</b> {parcel.receiver}
-          </p>
-
-          <p>
-            <b>Type:</b> {parcel.type}
-          </p>
-
-          <p>
-            <b>Status:</b> {parcel.status}
-          </p>
+          <p> <b>Tracking ID:</b> {parcel.trackingId}</p>
+          <p> <b>Receiver:</b> {parcel.receiver} </p>
+          <p><b>Type:</b> {parcel.type} </p>
+          <p> <b>Status:</b> {parcel.status}</p>
 
         </div>
       )}
 
-      <Link to="/customer-dashboard">
-        ← Dashboard
-      </Link>
+      <Link to="/customer-dashboard">  Dashboard</Link>
 
     </div>
   );
