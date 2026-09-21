@@ -1,0 +1,106 @@
+.profile-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 40px;
+}
+
+.profile-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.profile-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.profile-card {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  border-radius: 50%;
+  background: #dbeafe;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 40px;
+}
+
+.profile-card h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.profile-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.profile-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.profile-form input,
+.profile-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.profile-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.profile-form input:disabled,
+.profile-form textarea:disabled {
+  background: #f3f4f6;
+  color: #555;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.profile-buttons button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.edit-profile-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.save-profile-btn {
+  background: #16a34a;
+  color: white;
+}
+
+.cancel-profile-btn {
+  background: #ddd;
+  color: #333;
+}

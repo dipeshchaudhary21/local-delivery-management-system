@@ -1,0 +1,187 @@
+.manage-customers-page {
+  min-height: 100vh;
+  background: #f4f6f9;
+  padding: 30px;
+}
+
+/* Header */
+
+.customers-header {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+
+.back-link {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.customers-header h1 {
+  margin: 15px 0 5px;
+}
+
+.customers-header p {
+  color: #666;
+}
+
+.add-customer-btn {
+  background: #2563eb;
+  color: white;
+
+  border: none;
+  border-radius: 6px;
+
+  padding: 12px 18px;
+
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-customer-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Form */
+
+.customer-form-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+}
+
+.customer-form-card h2 {
+  margin-top: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-grid label {
+  display: block;
+  margin-bottom: 7px;
+  font-weight: bold;
+}
+
+.form-grid input {
+  width: 100%;
+  padding: 12px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  font-size: 15px;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.form-buttons button {
+  padding: 11px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #ddd;
+}
+
+.save-btn {
+  background: #16a34a;
+  color: white;
+}
+
+/* Customer List */
+
+.customer-list-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+}
+
+.list-header input {
+  width: 300px;
+  padding: 11px;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  font-size: 15px;
+}
+
+/* Table */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.customer-list-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customer-list-card th,
+.customer-list-card td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.customer-list-card th {
+  background: #f8fafc;
+}
+
+/* Buttons */
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 7px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.edit-btn {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.no-data {
+  text-align: center !important;
+  padding: 30px !important;
+  color: #777;
+}

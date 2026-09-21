@@ -1,0 +1,40 @@
+.book-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+}
+
+.book-page label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.book-page input,
+.book-page select,
+.book-page textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.book-page textarea {
+  min-height: 100px;
+}
+
+.book-page button {
+  margin: 20px 0;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.book-page a {
+  color: #1e3a8a;
+}
