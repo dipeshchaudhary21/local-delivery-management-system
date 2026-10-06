@@ -1,35 +1,15 @@
 import { Link } from "react-router-dom";
 import "./AdminDashboard.css";
+import DashboardSidebar from "../../components/DashboardSidebar";
 
-function AdminDashboard() {
+function AdminDashboard({ onLogout }) {
   return (
-    <div className="admin-dashboard">
-      <aside className="admin-sidebar">
-
-        <h2>Admin Panel</h2>
-
-        <Link to="/admin-dashboard">Dashboard </Link>
-
-        <Link to="/manage-customers"> Customers </Link>
-
-        <Link to="/manage-parcels">Parcels</Link>
-
-        <Link to="/admin-dashboard"> Staff</Link>
-
-        <Link to="/admin-dashboard">Reports</Link>
-
-        <Link to="/"> Logout </Link>
-
-      </aside>
-
+    <DashboardSidebar role="admin" onLogout={onLogout}><div className="admin-dashboard">
       <main className="admin-main">
-
         <h1>Admin Dashboard</h1>
-
         <p>Welcome to Admin Dashboard</p>
 
         <div className="admin-cards">
-
           <div className="admin-card">
             <h3>Total Customers</h3>
             <h2>150</h2>
@@ -38,11 +18,6 @@ function AdminDashboard() {
           <div className="admin-card">
             <h3>Total Parcels</h3>
             <h2>320</h2>
-          </div>
-
-          <div className="admin-card">
-            <h3>In Transit</h3>
-            <h2>45</h2>
           </div>
 
           <div className="admin-card">
@@ -70,7 +45,7 @@ function AdminDashboard() {
 
       </main>
 
-    </div>
+    </div></DashboardSidebar>
   );
 }
 

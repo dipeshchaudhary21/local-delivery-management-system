@@ -6,29 +6,22 @@
 
 /* Header */
 
-.customers-header {
+.customer-header {
   background: white;
-  padding: 25px;
+  padding: 15px;
   border-radius: 12px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  margin-bottom: 25px;
+}
+.customer-header h1{
+  margin-left: 20px;
 }
 
 .back-link {
   color: #2563eb;
   text-decoration: none;
-}
-
-.customers-header h1 {
-  margin: 15px 0 5px;
-}
-
-.customers-header p {
-  color: #666;
 }
 
 .add-customer-btn {
@@ -49,7 +42,6 @@
 }
 
 /* Form */
-
 .customer-form-card {
   background: white;
   padding: 25px;
@@ -108,7 +100,9 @@
 }
 
 /* Customer List */
-
+.customer-list h2{
+  margin-left: 20px;
+}
 .customer-list-card {
   background: white;
   padding: 25px;
@@ -184,4 +178,42 @@
   text-align: center !important;
   padding: 30px !important;
   color: #777;
+}
+
+.customer-form {
+  padding: 24px;
+}
+
+.customer-header {
+  margin: 0 0 0 32px;
+}
+
+.customer-header h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.customer-form form {
+  display: grid;
+  gap: 14px;
+}
+
+.customer-form input {
+  width: min(100%, 340px);
+  padding: 11px 12px;
+}
+
+.customer-form button {
+  width: fit-content;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.customer-form button:hover {
+  background: #1d4ed8;
 }

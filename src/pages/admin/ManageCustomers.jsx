@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ManageCustomers.css";
+import DashboardSidebar from "../../components/DashboardSidebar";
 
-function ManageCustomers() {
+function ManageCustomers({ onLogout }) {
 
   const [customers, setCustomers] = useState([
     {
@@ -111,23 +112,13 @@ function ManageCustomers() {
   };
 
   return (
-    <div className="manage-customers">
-
+    <DashboardSidebar role="admin" onLogout={onLogout}><div className="manage-customers">
       <div className="customer-header">
-
         <h1>Manage Customers</h1>
-
-        <Link to="/admin-dashboard"> Admin Dashboard </Link>
-
       </div>
 
       <div className="customer-form">
-
-        <h2>
-          {editingId
-            ? "Edit Customer"
-            : "Add Customer"}
-        </h2>
+        <h2> {editingId  ? "Edit Customer" : "Add Customer"} </h2>
 
         <form onSubmit={handleSubmit}>
           <input name="name" placeholder="Customer Name" value={form.name} onChange={handleChange} />
@@ -141,13 +132,9 @@ function ManageCustomers() {
       </div>
 
       <div className="customer-list">
-
         <h2>Customer List</h2>
-
         <table>
-
           <thead>
-
             <tr>
               <th>Name</th>
               <th>Email</th>
@@ -155,11 +142,9 @@ function ManageCustomers() {
               <th>Address</th>
               <th>Action</th>
             </tr>
-
           </thead>
 
           <tbody>
-
             {customers.map((customer) => (
               <tr key={customer.id}>
                 <td>{customer.name}</td>
@@ -172,17 +157,11 @@ function ManageCustomers() {
                   <button onClick={() => handleDelete(customer.id) }> Delete </button>
                 </td>
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </div>
-
-    </div>
+    </div></DashboardSidebar>
   );
 }
-
 export default ManageCustomers;

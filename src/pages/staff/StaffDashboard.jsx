@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import "./StaffDashboard.css";
+import DashboardSidebar from "../../components/DashboardSidebar";
 
-function StaffDashboard() {
+function StaffDashboard({ onLogout }) {
 
   const parcels = [
     {
@@ -25,34 +25,7 @@ function StaffDashboard() {
   ];
 
   return (
-    <div className="staff-dashboard">
-
-      <aside className="staff-sidebar">
-
-        <h2>Staff Panel</h2>
-
-        <Link to="/staff-dashboard">
-          Dashboard
-        </Link>
-
-        <Link to="/staff-dashboard">
-          Assigned Parcels
-        </Link>
-
-        <Link to="/staff-dashboard">
-          Update Status
-        </Link>
-
-        <Link to="/staff-dashboard">
-          Delivery History
-        </Link>
-
-        <Link to="/">
-          Logout
-        </Link>
-
-      </aside>
-
+    <DashboardSidebar role="staff" onLogout={onLogout}><div className="staff-dashboard">
       <main className="staff-main">
 
         <h1>Staff Dashboard</h1>
@@ -72,19 +45,12 @@ function StaffDashboard() {
           </div>
 
           <div>
-            <h3>In Transit</h3>
-            <h2>5</h2>
-          </div>
-
-          <div>
             <h3>Delivered</h3>
             <h2>3</h2>
           </div>
 
         </div>
-
         <h2>Assigned Parcels</h2>
-
         <table>
 
           <thead>
@@ -97,27 +63,18 @@ function StaffDashboard() {
           </thead>
 
           <tbody>
-
             {parcels.map((parcel) => (
-
               <tr key={parcel.trackingId}>
-
                 <td>{parcel.trackingId}</td>
                 <td>{parcel.receiver}</td>
                 <td>{parcel.address}</td>
                 <td>{parcel.status}</td>
-
               </tr>
-
             ))}
-
           </tbody>
-
         </table>
-
       </main>
-
-    </div>
+    </div></DashboardSidebar>
   );
 }
 

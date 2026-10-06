@@ -1,0 +1,17 @@
+.assigned-parcels-page {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f4f6f9;
+}
+
+.assigned-parcels-page h1 { margin: 0 0 8px; }
+.assigned-parcels-page > p { margin: 0 0 24px; color: #64748b; }
+.assigned-parcels-table-wrap { overflow-x: auto; background: white; border-radius: 8px; }
+.assigned-parcels-table-wrap table { width: 100%; min-width: 560px; border-collapse: collapse; }
+.assigned-parcels-table-wrap th,
+.assigned-parcels-table-wrap td { padding: 14px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+.assigned-parcels-table-wrap th { background: #166534; color: white; }
+
+@media (max-width: 520px) {
+  .assigned-parcels-page { padding: 22px 14px; }
+}

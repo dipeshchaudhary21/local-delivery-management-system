@@ -1,85 +1,71 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import { apiRequest } from "../../services/api";
 
-function Login() {
-  const navigate = useNavigate();
+function CustomerLogin() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
-  const [role, setRole] = useState("customer");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        setError("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+        try {
+            const data = await apiRequest("/auth/login.php", {
+                method: "POST",
+                body: JSON.stringify({ email, password })
+            });
 
-    if (!email || !password) {
-      alert("Please enter email and password");
-      return;
-    }
+            const customer = data.user;
+            const customerId = customer?.id ?? customer?.customer_id;
 
-    if (role === "customer") {
-      navigate("/customer-dashboard");
-    }
+            if (customer?.role !== "customer" || !customerId) {
+                throw new Error("Customer account required");
+            }
 
-    if (role === "staff") {
-      navigate("/staff-dashboard");
-    }
+            sessionStorage.setItem(
+                "user",
+                JSON.stringify({ ...customer, id: customerId })
+            );
 
-    if (role === "admin") {
-      navigate("/admin-dashboard");
-    }
-  };
+            window.location.href = "/customer-dashboard";
 
-  return (
-    <div className="login-container">
+        } catch (err) {
+            setError(err.message);
+        }
+    };
 
-      <div className="login-box">
+    return (
+        <div className="login-container">
+            <h2>Customer Login</h2>
 
-        <h1>Courier Management System</h1>
+            <form onSubmit={handleLogin}>
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                />
 
-        <h2>Login</h2>
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
 
-        <form onSubmit={handleLogin}>
+                <button type="submit">
+                    Login
+                </button>
 
-          <label>Role</label>
-
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            <option value="customer">Customer</option>
-            <option value="staff">Staff</option>
-            <option value="admin">Admin</option>
-          </select>
-
-          <label>Email</label>
-
-          <input
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <label>Password</label>
-
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <button type="submit">
-            Login
-          </button>
-
-        </form>
-
-      </div>
-
-    </div>
-  );
+                {error && (
+                    <p style={{ color: "red" }}>{error}</p>
+                )}
+            </form>
+        </div>
+    );
 }
 
-export default Login;
+export default CustomerLogin;

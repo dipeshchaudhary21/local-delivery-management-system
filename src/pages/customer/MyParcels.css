@@ -1,42 +1,84 @@
 .my-parcels {
-  padding: 40px;
-  min-height: 100vh;
-  background: #f4f6f9;
+  padding: 30px;
 }
 
-.my-parcels-header {
+.my-parcels h1 {
+  margin-bottom: 25px;
+}
+
+.parcel-list {
+  display: grid;
+  gap: 20px;
+}
+
+.parcel-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.parcel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.my-parcels-header a {
-  background: #2563eb;
-  color: white;
-  padding: 12px 18px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.my-parcels table {
-  width: 100%;
-  margin: 30px 0;
-  background: white;
-  border-collapse: collapse;
-}
-
-.my-parcels th,
-.my-parcels td {
-  padding: 14px;
   border-bottom: 1px solid #ddd;
-  text-align: left;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
 }
 
-.my-parcels th {
-  background: #1e3a8a;
-  color: white;
+.parcel-header h3 {
+  margin: 0;
 }
 
-.my-parcels td a {
-  color: #1e3a8a;
+.status {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.picked-up {
+  background: #cfe2ff;
+  color: #084298;
+}
+
+.in-transit {
+  background: #cff4fc;
+  color: #055160;
+}
+
+.out-for-delivery {
+  background: #e2d9f3;
+  color: #432874;
+}
+
+.delivered {
+  background: #d1e7dd;
+  color: #0f5132;
+}
+
+.paid {
+  color: green;
+  font-weight: bold;
+}
+
+.unpaid {
+  color: red;
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+}
+
+.no-parcels {
+  padding: 40px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
 }

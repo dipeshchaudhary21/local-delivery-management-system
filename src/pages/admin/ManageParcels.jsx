@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./ManageParcels.css";
+import DashboardSidebar from "../../components/DashboardSidebar";
 
-function ManageParcels() {
+function ManageParcels({ onLogout }) {
 
   const [parcels, setParcels] = useState([
     {
@@ -29,97 +30,6 @@ function ManageParcels() {
     },
   ]);
 
-  const [form, setForm] = useState({
-    trackingId: "",
-    customer: "",
-    receiver: "",
-    staff: "",
-    type: "Document",
-    weight: "",
-    date: "",
-    status: "Pending",
-  });
-
-  const [editingId, setEditingId] = useState(null);
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-
-    e.preventDefault();
-
-    if (
-      !form.trackingId ||
-      !form.customer ||
-      !form.receiver ||
-      !form.staff ||
-      !form.weight ||
-      !form.date
-    ) {
-      alert("Please fill all fields");
-      return;
-    }
-
-    if (editingId) {
-
-      setParcels(
-        parcels.map((parcel) =>
-          parcel.id === editingId
-            ? { ...parcel, ...form }
-            : parcel
-        )
-      );
-
-      alert("Parcel updated!");
-
-    } else {
-
-      setParcels([
-        ...parcels,
-        {
-          id: Date.now(),
-          ...form,
-        },
-      ]);
-
-      alert("Parcel added!");
-    }
-
-    setForm({
-      trackingId: "",
-      customer: "",
-      receiver: "",
-      staff: "",
-      type: "Document",
-      weight: "",
-      date: "",
-      status: "Pending",
-    });
-
-    setEditingId(null);
-  };
-
-  const handleEdit = (parcel) => {
-
-    setForm({
-      trackingId: parcel.trackingId,
-      customer: parcel.customer,
-      receiver: parcel.receiver,
-      staff: parcel.staff,
-      type: parcel.type,
-      weight: parcel.weight,
-      date: parcel.date,
-      status: parcel.status,
-    });
-
-    setEditingId(parcel.id);
-  };
-
   const handleDelete = (id) => {
 
     if (window.confirm("Delete parcel?")) {
@@ -134,62 +44,14 @@ function ManageParcels() {
   };
 
   return (
-    <div className="manage-parcels">
-
+    <DashboardSidebar role="admin" onLogout={onLogout}><div className="manage-parcels">
       <div className="parcel-header">
-
         <h1>Manage Parcels</h1>
-
-        <Link to="/admin-dashboard"> Admin Dashboard </Link>
-
-      </div>
-
-      <div className="parcel-form">
-
-        <h2>
-          {editingId
-            ? "Edit Parcel"
-            : "Add Parcel"}
-        </h2>
-
-        <form onSubmit={handleSubmit}>
-          <input name="trackingId" placeholder="Tracking ID" value={form.trackingId} onChange={handleChange}/>
-          <input name="customer" placeholder="Customer" value={form.customer} onChange={handleChange}/>
-          <input name="receiver" placeholder="Receiver" value={form.receiver} onChange={handleChange}/>
-          <input name="staff" placeholder="Staff" value={form.staff} onChange={handleChange}/>
-
-          <select name="type" value={form.type} onChange={handleChange}>
-            <option>Document</option>
-            <option>Package</option>
-            <option>Box</option>
-          </select>
-
-          <input name="weight" placeholder="Weight" value={form.weight} onChange={handleChange} />
-          <input type="date" name="date" value={form.date} onChange={handleChange}/>
-
-          <select name="status" value={form.status} onChange={handleChange} >
-            <option>Pending</option>
-            <option>Picked Up</option>
-            <option>In Transit</option>
-            <option>Delivered</option>
-          </select>
-
-          <button type="submit">
-            {editingId ? "Update Parcel" : "Add Parcel"}
-          </button>
-
-        </form>
-
       </div>
 
       <div className="parcel-list">
-
-        <h2>All Parcels</h2>
-
         <table>
-
           <thead>
-
             <tr>
               <th>Tracking ID</th>
               <th>Customer</th>
@@ -201,9 +63,7 @@ function ManageParcels() {
               <th>Status</th>
               <th>Action</th>
             </tr>
-
           </thead>
-
           <tbody>
             {parcels.map((parcel) => (
 
@@ -219,7 +79,6 @@ function ManageParcels() {
                 <td>{parcel.status}</td>
 
                 <td>
-                  <button onClick={() => handleEdit(parcel)}>  Edit </button>
                   <button onClick={() => handleDelete(parcel.id) } > Delete</button>
                 </td>
               </tr>
@@ -227,7 +86,7 @@ function ManageParcels() {
           </tbody>
         </table>
       </div>
-    </div>
+    </div></DashboardSidebar>
   );
 }
 

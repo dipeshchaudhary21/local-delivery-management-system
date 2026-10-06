@@ -1,50 +1,119 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import "./TrackParcel.css";
+import DashboardSidebar from "../../components/DashboardSidebar";
+import { apiRequest } from "../../services/api";
 
-function TrackParcel() {
+function TrackParcel({ onLogout }) {
   const [trackingId, setTrackingId] = useState("");
   const [parcel, setParcel] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const trackParcel = () => {
+  const handleTrack = async (e) => {
+    e.preventDefault();
 
-    if (!trackingId) {
-      alert("Please enter tracking ID");
+    if (!trackingId.trim()) {
+      setError("Please enter tracking ID");
       return;
     }
 
-    setParcel({
-      trackingId,
-      receiver: "Ram Sharma",
-      type: "Package",
-      status: "In Transit",
-    });
+    setLoading(true);
+    setError("");
+    setParcel(null);
+
+    try {
+      const result = await apiRequest(
+        `/parcels/track.php?tracking_id=${encodeURIComponent(
+          trackingId.trim()
+        )}`
+      );
+
+      console.log("API RESULT:", result);
+
+      if (result.success) {
+        setParcel(result.parcel);
+      } else {
+        setError(result.message || "Parcel not found");
+      }
+    } catch (err) {
+      console.error("TRACK ERROR:", err);
+      setError(err.message || "Unable to track parcel");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <div className="track-page">
+    <DashboardSidebar role="customer" onLogout={onLogout}>
+      <div className="track-page">
+        <h1>Track Parcel</h1>
 
-      <h1>Track Parcel</h1>
+        <form onSubmit={handleTrack} className="track-form">
+          <input
+            type="text"
+            placeholder="Enter Tracking ID"
+            value={trackingId}
+            onChange={(e) => setTrackingId(e.target.value)}
+          />
 
-      <input placeholder="Enter Tracking ID" value={trackingId} onChange={(e) => setTrackingId(e.target.value)}/>
-      <button onClick={trackParcel}> Track </button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Tracking..." : "Track Parcel"}
+          </button>
+        </form>
 
-      {parcel && (
-        <div className="tracking-result">
+        {error && (
+          <p className="error">
+            {error}
+          </p>
+        )}
 
-          <h2>Parcel Information</h2>
+        {parcel && (
+          <div className="tracking-result">
+            <h2>{parcel.tracking_id}</h2>
 
-          <p> <b>Tracking ID:</b> {parcel.trackingId}</p>
-          <p> <b>Receiver:</b> {parcel.receiver} </p>
-          <p><b>Type:</b> {parcel.type} </p>
-          <p> <b>Status:</b> {parcel.status}</p>
+            <p>
+              <strong>Receiver:</strong> {parcel.receiver_name}
+            </p>
 
-        </div>
-      )}
+            <p>
+              <strong>Phone:</strong> {parcel.receiver_phone}
+            </p>
 
-      <Link to="/customer-dashboard">  Dashboard</Link>
+            <p>
+              <strong>Address:</strong> {parcel.receiver_address}
+            </p>
 
-    </div>
+            <p>
+              <strong>Type:</strong> {parcel.parcel_type}
+            </p>
+
+            <p>
+              <strong>Weight:</strong> {parcel.weight} kg
+            </p>
+
+            <p>
+              <strong>Delivery Charge:</strong> Rs.{" "}
+              {parcel.delivery_charge}
+            </p>
+
+            <p>
+              <strong>Delivery Status:</strong>{" "}
+              {parcel.status}
+            </p>
+
+            <p>
+              <strong>Payment Status:</strong>{" "}
+              {parcel.payment_status}
+            </p>
+
+            <p>
+              <strong>Booked:</strong>{" "}
+              {new Date(parcel.created_at).toLocaleDateString()}
+            </p>
+          </div>
+        )}
+      </div>
+    </DashboardSidebar>
   );
 }
 
